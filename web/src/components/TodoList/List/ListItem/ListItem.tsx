@@ -1,4 +1,3 @@
-import styles from "../TodoList/TodoList.module.scss";
 import CompletedListItem from "./CompletedListItem/CompletedListItem";
 import EditingListItem from "./EditingListItem/EditingListItem";
 import PendingListItem from "./PendingListItem/PendingListItem";

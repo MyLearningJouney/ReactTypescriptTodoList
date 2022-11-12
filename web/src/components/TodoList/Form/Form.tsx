@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import ListDataContext from "../../../context/ListDataContext";
 import { TodoItem } from "../../../types/TodoItem";
-import CheckButton from "../../Buttons/CheckButton/CheckButton";
+import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
+import { v4 as uuidv4 } from "uuid";
 
 function Form() {
-  const { listData, setListData } = useContext(ListDataContext);
+  const { setListData } = useContext(ListDataContext);
   const [todo, setTodo] = useState<string>("");
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -14,10 +15,9 @@ function Form() {
       createdDate: new Date(Date.now()).toString(),
       completedDate: new Date().toString(),
       status: "pending",
-      id: "1234",
+      id: uuidv4(),
     };
     setListData((prevTodoList) => [...prevTodoList, newTodo]);
-    console.log(listData);
   }
 
   function handleChangeInputForm(e: React.ChangeEvent<HTMLInputElement>) {
@@ -33,7 +33,7 @@ function Form() {
         onChange={(event) => handleChangeInputForm(event)}
         autoComplete="off"
       />
-      <CheckButton type="submit" />
+      <ConfirmButton type="submit" />
     </form>
   );
 }
