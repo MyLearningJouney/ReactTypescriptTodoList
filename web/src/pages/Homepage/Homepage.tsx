@@ -16,8 +16,6 @@ function Homepage() {
     <ListDataContext.Provider value={{ listData, setListData }}>
       <main>
         <TodoList />
-        <CheckButton type="button" />
-        <CancelButton />
       </main>
     </ListDataContext.Provider>
   );

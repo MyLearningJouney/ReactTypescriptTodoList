@@ -8,8 +8,8 @@ function Form() {
   const { setListData } = useContext(ListDataContext);
   const [todo, setTodo] = useState<string>("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const newTodo: TodoItem = {
       todo: todo,
       createdDate: new Date(Date.now()).toString(),
@@ -20,9 +20,9 @@ function Form() {
     setListData((prevTodoList) => [...prevTodoList, newTodo]);
   }
 
-  function handleChangeInputForm(e: React.ChangeEvent<HTMLInputElement>) {
-    e.preventDefault();
-    setTodo(e.target.value);
+  const handleChangeInputForm = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setTodo(event.target.value);
   }
 
   return (
@@ -30,7 +30,7 @@ function Form() {
       <input
         type="text"
         placeholder={"What you have to do today ?"}
-        onChange={(event) => handleChangeInputForm(event)}
+        onChange={handleChangeInputForm}
         autoComplete="off"
       />
       <ConfirmButton type="submit" />

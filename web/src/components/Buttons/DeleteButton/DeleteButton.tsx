@@ -1,9 +1,14 @@
 import styles from "../DeleteButton/DeleteButton.module.scss";
 import { FaTrash } from "react-icons/fa";
 
-function DeleteButton() {
+interface Props {
+  type?: "submit" | "reset" | "button";
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+function DeleteButton(props: Props) {
   return (
-    <button>
+    <button type={props.type} onClick={props.onClick}>
       <FaTrash className={styles.trash} />
     </button>
   );

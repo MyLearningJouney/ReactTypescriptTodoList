@@ -13,8 +13,36 @@ function PendingListItem({ TodoItem }: Props) {
 
   const handleConfirm = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log(TodoItem.todo);
+    TodoItem.status = "completed";
+    setListData(
+      listData.map((todo) => {
+        if (todo.id === TodoItem.id) {
+          return TodoItem;
+        } else {
+          return todo;
+        }
+      })
+    );
   };
+  const handleEdit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    TodoItem.status = "editing";
+    setListData(
+      listData.map((todo) => {
+        if (todo.id === TodoItem.id) {
+          return TodoItem;
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setListData(listData.filter((todo) => todo.id !== TodoItem.id));
+    console.log(listData);
+  };
+
   return (
     <li>
       <div>
@@ -22,8 +50,8 @@ function PendingListItem({ TodoItem }: Props) {
       </div>
       <div>
         <ConfirmButton onClick={handleConfirm} />
-        <EditButton />
-        <DeleteButton />
+        <EditButton onClick={handleEdit} />
+        <DeleteButton onClick={handleDelete} />
       </div>
     </li>
   );
