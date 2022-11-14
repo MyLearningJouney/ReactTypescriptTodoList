@@ -56,12 +56,13 @@ function EditingListItem({ TodoItem }: Props) {
             id="editInput"
             value={editValue}
             onChange={handleChange}
+            onMouseDown={(e) => e.preventDefault()}
             autoFocus
-            onBlur={handleBlur}
+            onBlur={() => setTimeout(handleBlur, 100)}
           />
         </div>
         <div>
-          <ConfirmButton />
+          <ConfirmButton type={"submit"} />
           <EditButton />
           <DeleteButton />
         </div>
