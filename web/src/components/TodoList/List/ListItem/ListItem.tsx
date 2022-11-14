@@ -13,7 +13,7 @@ function ListItem({ TodoItem }: Props) {
   return TodoItem.status === "pending" ? (
     <PendingListItem
       TodoItem={TodoItem}
-      className={{
+      listStyles={{
         list: styles.listItem,
         text: styles.todoText,
         buttons: styles.todoButtons,
@@ -22,7 +22,7 @@ function ListItem({ TodoItem }: Props) {
   ) : TodoItem.status === "editing" ? (
     <EditingListItem
       TodoItem={TodoItem}
-      className={{
+      listStyles={{
         list: styles.listItem,
         text: styles.todoText,
         buttons: styles.todoButtons,
@@ -31,7 +31,7 @@ function ListItem({ TodoItem }: Props) {
   ) : (
     <CompletedListItem
       TodoItem={TodoItem}
-      className={{
+      listStyles={{
         list: styles.listItem,
         text: styles.todoText,
         buttons: styles.todoButtons,

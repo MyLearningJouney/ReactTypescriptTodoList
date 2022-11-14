@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import ListDataContext from "../../../context/ListDataContext";
 import { TodoItem } from "../../../types/TodoItem";
-import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
 import { v4 as uuidv4 } from "uuid";
 
 import styles from "../Form/Form.module.scss";
+import AddButton from "../../Buttons/AddButton/AddButton";
 
 function Form() {
   const { setListData } = useContext(ListDataContext);
@@ -38,7 +38,7 @@ function Form() {
         onChange={handleChangeInputForm}
         autoComplete="off"
       />
-      <ConfirmButton type="submit" />
+      <AddButton type="submit" />
     </form>
   );
 }

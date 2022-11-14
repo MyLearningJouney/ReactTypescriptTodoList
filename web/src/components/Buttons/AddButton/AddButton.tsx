@@ -1,20 +1,20 @@
 import styles from "../EditButton/EditButton.module.scss";
-import { FaPen } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 interface Props {
   type?: "submit" | "reset" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  hidden?: boolean;
+  className?: string;
 }
-function EditButton(props: Props) {
+function AddButton(props: Props) {
   return (
     <button
       type={props.type}
       onClick={props.onClick}
-      className={props.hidden ? `${styles.hide}` : `${styles.editButton}`}
+      className={props.className}
     >
-      <FaPen className={styles.edit} />
+      <FaPlus className={styles.edit} />
     </button>
   );
 }
-export default EditButton;
+export default AddButton;

@@ -1,3 +1,24 @@
-.cancel{
-    color:red
+.hide {
+  visibility: hidden;
+}
+
+.cancelButton {
+  cursor: pointer;
+  display: flex !important;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.cancelButton:hover {
+  cursor: pointer;
+  color: #ff3e4e;
+  transition: all 0.25s ease;
+  transform: scale(1.4);
+  filter: drop-shadow(0px 8px 2.5px rgba(255, 62, 78, 0.6));
+  margin-top: -7px;
+}
+
+.icon {
+  transform: scale(1.5);
 }

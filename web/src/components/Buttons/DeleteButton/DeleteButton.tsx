@@ -4,7 +4,7 @@ import { FaTrash } from "react-icons/fa";
 interface Props {
   type?: "submit" | "reset" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
+  hidden?: boolean;
 }
 
 function DeleteButton(props: Props) {
@@ -12,7 +12,7 @@ function DeleteButton(props: Props) {
     <button
       type={props.type}
       onClick={props.onClick}
-      className={props.className}
+      className={props.hidden ? `${styles.hide}` : `${styles.deleteButton}`}
     >
       <FaTrash className={styles.trash} />
     </button>

@@ -4,7 +4,7 @@ import { CgClose } from "react-icons/cg";
 interface Props {
   type?: "submit" | "reset" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
+  hidden?: boolean;
 }
 
 function CancelButton(props: Props) {
@@ -12,9 +12,9 @@ function CancelButton(props: Props) {
     <button
       type={props.type}
       onClick={props.onClick}
-      className={props.className}
+      className={props.hidden ? `${styles.hide}` : `${styles.cancelButton}`}
     >
-      <CgClose className={styles.cancel} />
+      <CgClose className={styles.icon} />
     </button>
   );
 }

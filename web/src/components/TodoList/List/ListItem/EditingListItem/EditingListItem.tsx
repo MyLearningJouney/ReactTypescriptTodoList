@@ -9,9 +9,9 @@ import styles from "../EditingListItem/EditingListItem.module.scss";
 
 interface Props {
   TodoItem: TodoItem;
-  className: { list: string; text: string; buttons: string };
+  listStyles: { list: string; text: string; buttons: string };
 }
-function EditingListItem({ TodoItem, className }: Props) {
+function EditingListItem({ TodoItem, listStyles }: Props) {
   const { listData, setListData } = useContext(ListDataContext);
   const [editValue, setEditValue] = useState(TodoItem.todo);
 
@@ -49,9 +49,9 @@ function EditingListItem({ TodoItem, className }: Props) {
   };
 
   return (
-    <li className={className.list}>
+    <li className={listStyles.list}>
       <form onSubmit={handleSubmit} className={styles.editForm}>
-        <div className={className.text}>
+        <div className={listStyles.text}>
           <input
             className={styles.editInput}
             type="text"
@@ -61,13 +61,13 @@ function EditingListItem({ TodoItem, className }: Props) {
             onChange={handleChange}
             onMouseDown={(e) => e.preventDefault()}
             autoFocus
-            //onBlur={() => setTimeout(handleBlur, 100)}
+            onBlur={() => setTimeout(handleBlur, 100)}
           />
         </div>
-        <div className={className.buttons}>
+        <div className={listStyles.buttons}>
           <ConfirmButton type={"submit"} />
-          <EditButton className={styles.hide} />
-          <DeleteButton className={styles.hide} />
+          <EditButton hidden={true} />
+          <DeleteButton hidden={true} />
         </div>
       </form>
     </li>

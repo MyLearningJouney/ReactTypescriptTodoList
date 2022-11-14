@@ -1,3 +1,12 @@
 .hide {
   visibility: hidden;
 }
+
+.completed {
+  background-color: #d6ecd2 !important;
+  filter: none !important;
+}
+
+.completed p {
+    opacity: 0.5;
+}

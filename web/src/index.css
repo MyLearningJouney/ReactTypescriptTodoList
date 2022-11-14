@@ -18,6 +18,19 @@ label {
   scroll-behavior: smooth;
 }
 
+button,
+button:focus {
+  outline: none;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+button:active {
+  outline: none;
+  background: transparent;
+  border: 1px solid grey;
+}
+
 main {
-  margin: 0 auto
+  margin: 0 auto;
 }

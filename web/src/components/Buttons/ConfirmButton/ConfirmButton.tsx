@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 interface Props {
   type?: "submit" | "reset" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
+  hidden?: boolean;
 }
 
 function ConfirmButton(props: Props) {
@@ -12,9 +12,9 @@ function ConfirmButton(props: Props) {
     <button
       type={props.type}
       onClick={props.onClick}
-      className={props.className}
+      className={props.hidden ? `${styles.hide}` : `${styles.confirmButton}`}
     >
-      <FaCheck className={styles.check} />
+      <FaCheck />
     </button>
   );
 }

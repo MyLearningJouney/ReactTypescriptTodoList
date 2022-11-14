@@ -5,13 +5,13 @@ import CancelButton from "../../../../Buttons/CancelButton/CancelButton";
 import DeleteButton from "../../../../Buttons/DeleteButton/DeleteButton";
 import EditButton from "../../../../Buttons/EditButton/EditButton";
 
-import styles from "../CompletedListItem/CompletedListItem.module.scss"
+import styles from "../CompletedListItem/CompletedListItem.module.scss";
 
 interface Props {
   TodoItem: TodoItem;
-  className: { list: string; text: string; buttons: string };
+  listStyles: { list: string; text: string; buttons: string };
 }
-function CompletedListItem({ TodoItem, className }: Props) {
+function CompletedListItem({ TodoItem, listStyles }: Props) {
   const { listData, setListData } = useContext(ListDataContext);
 
   const handleCancel = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -28,14 +28,14 @@ function CompletedListItem({ TodoItem, className }: Props) {
     );
   };
   return (
-    <li className={className.list}>
-      <div className={className.text}>
+    <li className={`${listStyles.list} ${styles.completed}`}>
+      <div className={listStyles.text}>
         <p>Completed - {TodoItem.todo}</p>
       </div>
-      <div className={className.buttons}>
+      <div className={listStyles.buttons}>
         <CancelButton onClick={handleCancel} />
-        <EditButton className={styles.hide}/>
-        <DeleteButton className={styles.hide}/>
+        <EditButton hidden={true} />
+        <DeleteButton hidden={true} />
       </div>
     </li>
   );
