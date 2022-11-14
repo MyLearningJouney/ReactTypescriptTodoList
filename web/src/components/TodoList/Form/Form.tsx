@@ -4,6 +4,8 @@ import { TodoItem } from "../../../types/TodoItem";
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
 import { v4 as uuidv4 } from "uuid";
 
+import styles from "../Form/Form.module.scss";
+
 function Form() {
   const { setListData } = useContext(ListDataContext);
   const [todo, setTodo] = useState<string>("");
@@ -18,16 +20,19 @@ function Form() {
       id: uuidv4(),
     };
     setListData((prevTodoList) => [...prevTodoList, newTodo]);
-  }
+  };
 
-  const handleChangeInputForm = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputForm = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     event.preventDefault();
     setTodo(event.target.value);
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <input
+        className={styles.input}
         type="text"
         placeholder={"What you have to do today ?"}
         onChange={handleChangeInputForm}

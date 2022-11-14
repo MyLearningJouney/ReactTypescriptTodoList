@@ -1,21 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-import CancelButton from "../../components/Buttons/CancelButton/CancelButton";
-import CheckButton from "../../components/Buttons/ConfirmButton/ConfirmButton";
 import { TodoItem } from "../../types/TodoItem";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import ListDataContext from "../../context/ListDataContext";
 import TodoList from "../../components/TodoList/TodoList";
 
+import styles from "../Homepage/Homepage.module.scss";
+
 function Homepage() {
   const [listData, setListData] = useState<TodoItem[]>([]);
-  console.log(listData);
 
   return (
     <ListDataContext.Provider value={{ listData, setListData }}>
-      <main>
+      <main >
+        <section className={styles.todoList}>
         <TodoList />
+        </section>
       </main>
     </ListDataContext.Provider>
   );

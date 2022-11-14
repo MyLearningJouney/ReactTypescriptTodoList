@@ -1,0 +1,14 @@
+.inputForm {
+  display: flex;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 auto;
+}

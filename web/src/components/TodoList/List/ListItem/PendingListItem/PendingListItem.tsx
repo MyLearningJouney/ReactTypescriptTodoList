@@ -7,8 +7,9 @@ import EditButton from "../../../../Buttons/EditButton/EditButton";
 
 interface Props {
   TodoItem: TodoItem;
+  className: { list: string; text: string; buttons: string };
 }
-function PendingListItem({ TodoItem }: Props) {
+function PendingListItem({ TodoItem, className }: Props) {
   const { listData, setListData } = useContext(ListDataContext);
 
   const handleConfirm = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,11 +45,11 @@ function PendingListItem({ TodoItem }: Props) {
   };
 
   return (
-    <li>
-      <div>
+    <li className={className.list}>
+      <div className={className.text}>
         <p>{TodoItem.todo}</p>
       </div>
-      <div>
+      <div className={className.buttons}>
         <ConfirmButton onClick={handleConfirm} />
         <EditButton onClick={handleEdit} />
         <DeleteButton onClick={handleDelete} />

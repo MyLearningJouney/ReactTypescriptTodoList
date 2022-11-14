@@ -4,21 +4,23 @@ import Filter from "./Filter/Filter";
 import Form from "./Form/Form";
 import ListItem from "./List/ListItem/ListItem";
 
+import styles from "../TodoList/TodoList.module.scss";
+
 function TodoList() {
-  const { listData, setListData } = useContext(ListDataContext);
+  const { listData } = useContext(ListDataContext);
   const [filter, setFilter] = useState("all");
   console.log(filter);
 
   const filteredList = listData
     .filter((TodoItem) => TodoItem.status === filter)
     .map((TodoItem) => (
-      <ul>
+      <ul className={styles.list}>
         <ListItem key={TodoItem.id} TodoItem={TodoItem} />
       </ul>
     ));
 
   const completeList = (
-    <ul>
+    <ul className={styles.list}>
       {listData.map((TodoItem) => (
         <ListItem key={TodoItem.id} TodoItem={TodoItem} />
       ))}
@@ -27,8 +29,10 @@ function TodoList() {
 
   return (
     <>
-      <Form />
-      <Filter setFilter={setFilter} />
+      <div className={styles.inputForm}>
+        <Form />
+        <Filter setFilter={setFilter} />
+      </div>
       {filter === "all" ? completeList : filteredList}
     </>
   );

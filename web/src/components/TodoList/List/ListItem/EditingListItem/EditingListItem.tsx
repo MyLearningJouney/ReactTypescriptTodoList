@@ -5,10 +5,13 @@ import ConfirmButton from "../../../../Buttons/ConfirmButton/ConfirmButton";
 import DeleteButton from "../../../../Buttons/DeleteButton/DeleteButton";
 import EditButton from "../../../../Buttons/EditButton/EditButton";
 
+import styles from "../EditingListItem/EditingListItem.module.scss";
+
 interface Props {
   TodoItem: TodoItem;
+  className: { list: string; text: string; buttons: string };
 }
-function EditingListItem({ TodoItem }: Props) {
+function EditingListItem({ TodoItem, className }: Props) {
   const { listData, setListData } = useContext(ListDataContext);
   const [editValue, setEditValue] = useState(TodoItem.todo);
 
@@ -32,8 +35,7 @@ function EditingListItem({ TodoItem }: Props) {
     );
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    event.preventDefault();
+  const handleBlur = () => {
     TodoItem.status = "pending";
     setListData(
       listData.map((todo) => {
@@ -47,10 +49,11 @@ function EditingListItem({ TodoItem }: Props) {
   };
 
   return (
-    <li>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <li className={className.list}>
+      <form onSubmit={handleSubmit} className={styles.editForm}>
+        <div className={className.text}>
           <input
+            className={styles.editInput}
             type="text"
             name="editInput"
             id="editInput"
@@ -58,13 +61,13 @@ function EditingListItem({ TodoItem }: Props) {
             onChange={handleChange}
             onMouseDown={(e) => e.preventDefault()}
             autoFocus
-            onBlur={() => setTimeout(handleBlur, 100)}
+            //onBlur={() => setTimeout(handleBlur, 100)}
           />
         </div>
-        <div>
+        <div className={className.buttons}>
           <ConfirmButton type={"submit"} />
-          <EditButton />
-          <DeleteButton />
+          <EditButton className={styles.hide} />
+          <DeleteButton className={styles.hide} />
         </div>
       </form>
     </li>
