@@ -1,19 +1,19 @@
-import styles from "../EditButton/EditButton.module.scss";
+import styles from "../AddButton/AddButton.module.scss";
 import { FaPlus } from "react-icons/fa";
 
 interface Props {
   type?: "submit" | "reset" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
+  hidden?: boolean;
 }
 function AddButton(props: Props) {
   return (
     <button
       type={props.type}
       onClick={props.onClick}
-      className={props.className}
+      className={props.hidden ? `${styles.hide}` : `${styles.addButton}`}
     >
-      <FaPlus className={styles.edit} />
+      <FaPlus className={styles.icon} />
     </button>
   );
 }

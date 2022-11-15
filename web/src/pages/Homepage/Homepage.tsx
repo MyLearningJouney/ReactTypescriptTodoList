@@ -9,11 +9,13 @@ import styles from "../Homepage/Homepage.module.scss";
 function Homepage() {
   const [listData, setListData] = useState<TodoItem[]>([]);
 
+  console.log(listData);
+
   return (
     <ListDataContext.Provider value={{ listData, setListData }}>
-      <main >
+      <main>
         <section className={styles.todoList}>
-        <TodoList />
+          <TodoList />
         </section>
       </main>
     </ListDataContext.Provider>

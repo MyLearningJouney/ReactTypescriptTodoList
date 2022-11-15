@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ListDataContext from "../../../../../context/ListDataContext";
 import { TodoItem } from "../../../../../types/TodoItem";
+import DateFormat from "../../../../../utils/DateFormat";
 import ConfirmButton from "../../../../Buttons/ConfirmButton/ConfirmButton";
 import DeleteButton from "../../../../Buttons/DeleteButton/DeleteButton";
 import EditButton from "../../../../Buttons/EditButton/EditButton";
@@ -15,6 +16,7 @@ function PendingListItem({ TodoItem, listStyles }: Props) {
   const handleConfirm = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     TodoItem.status = "completed";
+    TodoItem.completedDate = DateFormat(new Date(Date.now()));
     setListData(
       listData.map((todo) => {
         if (todo.id === TodoItem.id) {
@@ -48,6 +50,7 @@ function PendingListItem({ TodoItem, listStyles }: Props) {
     <li className={listStyles.list}>
       <div className={listStyles.text}>
         <p>{TodoItem.todo}</p>
+        <p>{TodoItem.createdDate}</p>
       </div>
       <div className={listStyles.buttons}>
         <ConfirmButton onClick={handleConfirm} />

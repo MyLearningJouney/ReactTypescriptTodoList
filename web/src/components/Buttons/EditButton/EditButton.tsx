@@ -13,7 +13,7 @@ function EditButton(props: Props) {
       onClick={props.onClick}
       className={props.hidden ? `${styles.hide}` : `${styles.editButton}`}
     >
-      <FaPen className={styles.edit} />
+      <FaPen className={styles.icon} />
     </button>
   );
 }

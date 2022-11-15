@@ -6,7 +6,6 @@ interface Props {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   hidden?: boolean;
 }
-
 function DeleteButton(props: Props) {
   return (
     <button
@@ -14,7 +13,7 @@ function DeleteButton(props: Props) {
       onClick={props.onClick}
       className={props.hidden ? `${styles.hide}` : `${styles.deleteButton}`}
     >
-      <FaTrash className={styles.trash} />
+      <FaTrash className={styles.icon} />
     </button>
   );
 }

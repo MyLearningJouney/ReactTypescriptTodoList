@@ -30,7 +30,8 @@ function CompletedListItem({ TodoItem, listStyles }: Props) {
   return (
     <li className={`${listStyles.list} ${styles.completed}`}>
       <div className={listStyles.text}>
-        <p>Completed - {TodoItem.todo}</p>
+        <p>{TodoItem.todo}</p>
+        <p>{TodoItem.completedDate}</p>
       </div>
       <div className={listStyles.buttons}>
         <CancelButton onClick={handleCancel} />

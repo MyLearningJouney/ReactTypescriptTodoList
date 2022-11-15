@@ -14,7 +14,7 @@ function ConfirmButton(props: Props) {
       onClick={props.onClick}
       className={props.hidden ? `${styles.hide}` : `${styles.confirmButton}`}
     >
-      <FaCheck />
+      <FaCheck className={styles.icon} />
     </button>
   );
 }

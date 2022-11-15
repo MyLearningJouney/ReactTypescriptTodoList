@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import styles from "../Form/Form.module.scss";
 import AddButton from "../../Buttons/AddButton/AddButton";
+import DateFormat from "../../../utils/DateFormat";
 
 function Form() {
   const { setListData } = useContext(ListDataContext);
@@ -14,8 +15,8 @@ function Form() {
     event.preventDefault();
     const newTodo: TodoItem = {
       todo: todo,
-      createdDate: new Date(Date.now()).toString(),
-      completedDate: new Date().toString(),
+      createdDate: DateFormat(new Date(Date.now())),
+      completedDate: "",
       status: "pending",
       id: uuidv4(),
     };
@@ -37,6 +38,7 @@ function Form() {
         placeholder={"What you have to do today ?"}
         onChange={handleChangeInputForm}
         autoComplete="off"
+        required
       />
       <AddButton type="submit" />
     </form>

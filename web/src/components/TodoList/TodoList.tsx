@@ -9,10 +9,11 @@ import styles from "../TodoList/TodoList.module.scss";
 function TodoList() {
   const { listData } = useContext(ListDataContext);
   const [filter, setFilter] = useState("all");
-  console.log(filter);
 
   const filteredList = listData
-    .filter((TodoItem) => TodoItem.status === filter)
+    .filter(
+      (TodoItem) => TodoItem.status === filter || TodoItem.status === "editing"
+    )
     .map((TodoItem) => (
       <ul className={styles.list}>
         <ListItem key={TodoItem.id} TodoItem={TodoItem} />

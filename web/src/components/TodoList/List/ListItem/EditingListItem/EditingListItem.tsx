@@ -61,7 +61,8 @@ function EditingListItem({ TodoItem, listStyles }: Props) {
             onChange={handleChange}
             onMouseDown={(e) => e.preventDefault()}
             autoFocus
-            onBlur={() => setTimeout(handleBlur, 100)}
+            onBlur={() => setTimeout(handleBlur, 500)}
+            required
           />
         </div>
         <div className={listStyles.buttons}>

@@ -8,5 +8,15 @@
 }
 
 .completed p {
-    opacity: 0.5;
+  opacity: 0.5;
+}
+
+.completed p:first-child {
+  text-decoration: line-through;
+}
+
+.completed p:last-child::before {
+  font-size: 12px;
+  margin-right: 3px;
+  content: "Completed at";
 }

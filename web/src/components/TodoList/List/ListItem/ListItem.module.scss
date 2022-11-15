@@ -10,6 +10,15 @@
 .todoText {
   display: flex;
   width: 85%;
+  flex-direction: column;
+}
+
+.todoText p {
+  margin: 5px 0px;
+}
+
+.todoText p:last-child {
+  font-size: 12px;
 }
 
 .todoButtons {
