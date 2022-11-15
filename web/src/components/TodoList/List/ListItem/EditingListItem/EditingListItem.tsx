@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import ListDataContext from "../../../../../context/ListDataContext";
 import { TodoItem } from "../../../../../types/TodoItem";
 import ConfirmButton from "../../../../Buttons/ConfirmButton/ConfirmButton";
@@ -6,6 +6,8 @@ import DeleteButton from "../../../../Buttons/DeleteButton/DeleteButton";
 import EditButton from "../../../../Buttons/EditButton/EditButton";
 
 import styles from "../EditingListItem/EditingListItem.module.scss";
+import handleBlur from "./ButtonHandlers/handleBlur";
+import handleSubmit from "./ButtonHandlers/handleSubmit";
 
 interface Props {
   TodoItem: TodoItem;
@@ -15,34 +17,14 @@ function EditingListItem({ TodoItem, listStyles }: Props) {
   const { listData, setListData } = useContext(ListDataContext);
   const [editValue, setEditValue] = useState(TodoItem.todo);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setEditValue(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    TodoItem.todo = editValue;
-    TodoItem.status = "pending";
-    setListData(
-      listData.map((todo) => {
-        return todo.id === TodoItem.id ? TodoItem : todo;
-      })
-    );
-  };
-
-  const handleBlur = () => {
-    TodoItem.status = "pending";
-    setListData(
-      listData.map((todo) => {
-        return todo.id === TodoItem.id ? TodoItem : todo;
-      })
-    );
-  };
-
   return (
     <li className={listStyles.list}>
-      <form onSubmit={handleSubmit} className={styles.editForm}>
+      <form
+        onSubmit={(event) =>
+          handleSubmit({ event, TodoItem, setListData, listData, editValue })
+        }
+        className={styles.editForm}
+      >
         <div className={listStyles.text}>
           <input
             className={styles.editInput}
@@ -50,10 +32,14 @@ function EditingListItem({ TodoItem, listStyles }: Props) {
             name="editInput"
             id="editInput"
             value={editValue}
-            onChange={handleChange}
-            onMouseDown={(e) => e.preventDefault()}
+            onChange={(event) => setEditValue(event.target.value)}
             autoFocus
-            onBlur={() => setTimeout(handleBlur, 500)}
+            onBlur={() =>
+              setTimeout(
+                () => handleBlur({ TodoItem, listData, setListData }),
+                500
+              )
+            }
             required
           />
         </div>

@@ -6,6 +6,7 @@ import DeleteButton from "../../../../Buttons/DeleteButton/DeleteButton";
 import EditButton from "../../../../Buttons/EditButton/EditButton";
 
 import styles from "../CompletedListItem/CompletedListItem.module.scss";
+import handleCancel from "./ButtonsHandlers/handleCancel";
 
 interface Props {
   TodoItem: TodoItem;
@@ -14,15 +15,6 @@ interface Props {
 function CompletedListItem({ TodoItem, listStyles }: Props) {
   const { listData, setListData } = useContext(ListDataContext);
 
-  const handleCancel = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    TodoItem.status = "pending";
-    setListData(
-      listData.map((todo) => {
-        return todo.id === TodoItem.id ? TodoItem : todo;
-      })
-    );
-  };
   return (
     <li className={`${listStyles.list} ${styles.completed}`}>
       <div className={listStyles.text}>
@@ -30,7 +22,11 @@ function CompletedListItem({ TodoItem, listStyles }: Props) {
         <p>{TodoItem.completedDate}</p>
       </div>
       <div className={listStyles.buttons}>
-        <CancelButton onClick={handleCancel} />
+        <CancelButton
+          onClick={(event) =>
+            handleCancel({ event, TodoItem, listData, setListData })
+          }
+        />
         <EditButton hidden={true} />
         <DeleteButton hidden={true} />
       </div>

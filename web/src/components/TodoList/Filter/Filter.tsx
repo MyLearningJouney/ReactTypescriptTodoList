@@ -11,10 +11,6 @@ function Filter(props: Props) {
   };
   return (
     <div className={styles.filterWrapper}>
-      <label htmlFor="filter-select" className={styles.label}>
-        Filter:
-      </label>
-
       <select
         name="todo"
         id="filter-select"
