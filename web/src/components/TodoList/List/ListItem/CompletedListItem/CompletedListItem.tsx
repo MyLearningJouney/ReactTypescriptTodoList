@@ -19,11 +19,7 @@ function CompletedListItem({ TodoItem, listStyles }: Props) {
     TodoItem.status = "pending";
     setListData(
       listData.map((todo) => {
-        if (todo.id === TodoItem.id) {
-          return TodoItem;
-        } else {
-          return todo;
-        }
+        return todo.id === TodoItem.id ? TodoItem : todo;
       })
     );
   };
