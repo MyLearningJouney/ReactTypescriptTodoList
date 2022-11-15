@@ -1,6 +1,6 @@
 import { SetStateAction } from "react";
 import { TodoItem } from "../../../../../../types/TodoItem";
-import DateFormat from "../../../../../../utils/DateFormat";
+import { DateFormatComplete } from "../../../../../../utils/DateFormat";
 
 interface Props {
   TodoItem: TodoItem;
@@ -12,7 +12,7 @@ interface Props {
 function handleConfirm({ event, TodoItem, setListData, listData }: Props) {
   event.preventDefault();
   TodoItem.status = "completed";
-  TodoItem.completedDate = DateFormat(new Date(Date.now()));
+  TodoItem.completedDate = DateFormatComplete(new Date(Date.now()));
   setListData(
     listData.map((todo) => {
       return todo.id === TodoItem.id ? TodoItem : todo;

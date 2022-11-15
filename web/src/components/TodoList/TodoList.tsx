@@ -13,7 +13,7 @@ function TodoList() {
 
   useEffect(() => {
     const localStorageList = JSON.parse(
-      window.localStorage.getItem("AWESOME_TODO_LIST") || ""
+      window.localStorage.getItem("AWESOME_TODO_LIST") || "[]"
     );
     if (localStorageList) {
       setListData(localStorageList);
@@ -47,7 +47,7 @@ function TodoList() {
       <ListDataContext.Provider value={{ listData, setListData }}>
         <div className={styles.inputForm}>
           <Form />
-          <Filter setFilter={setFilter} />
+          <Filter filter={filter} setFilter={setFilter} />
         </div>
         {filter === "all" ? completeList : filteredList}
       </ListDataContext.Provider>

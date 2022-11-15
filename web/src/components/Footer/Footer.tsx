@@ -3,7 +3,7 @@ import styles from "../Footer/Footer.module.scss";
 function Footer() {
   return (
     <footer>
-      <p className={styles.footer}>Hello Footer!</p>
+      <p className={styles.footer}>Made with 🧡 by - Danilo Packer</p>
     </footer>
   );
 }

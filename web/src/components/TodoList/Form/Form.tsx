@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import styles from "../Form/Form.module.scss";
 import AddButton from "../../Buttons/AddButton/AddButton";
-import DateFormat from "../../../utils/DateFormat";
+import { DateFormatComplete } from "../../../utils/DateFormat";
 
 function Form() {
   const { setListData } = useContext(ListDataContext);
@@ -15,7 +15,7 @@ function Form() {
     event.preventDefault();
     const newTodo: TodoItem = {
       todo: todo,
-      createdDate: DateFormat(new Date(Date.now())),
+      createdDate: DateFormatComplete(new Date(Date.now())),
       completedDate: "",
       status: "pending",
       id: uuidv4(),

@@ -1,4 +1,4 @@
-function DateFormat(date: Date) {
+export function DateFormatComplete(date: Date) {
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const hour = String(date.getHours()).padStart(2, "0");
@@ -9,4 +9,8 @@ function DateFormat(date: Date) {
   )} at ${hour}:${minuts}`;
 }
 
-export default DateFormat;
+export function DateFormatDay(date: Date) {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  return `${day}/${month}/${date.getFullYear()}`;
+}

@@ -1,28 +1,40 @@
 import styles from "../Filter/Filter.module.scss";
 
 interface Props {
+  filter: string;
   setFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function Filter(props: Props) {
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    props.setFilter(event.target.value);
+    const target = event.target as HTMLButtonElement;
+    props.setFilter(target.value);
   };
+
   return (
     <div className={styles.filterWrapper}>
-      <select
-        name="todo"
-        id="filter-select"
-        onChange={handleChange}
-        className={styles.select}
+      <button
+        className={props.filter === "all" ? styles.active : ""}
+        value="all"
+        onClick={handleClick}
       >
-        <option value="all" defaultValue={"all"}>
-          All
-        </option>
-        <option value="completed">Completed</option>
-        <option value="pending">Pending</option>
-      </select>
+        All
+      </button>
+      <button
+        className={props.filter === "pending" ? styles.active : ""}
+        value="pending"
+        onClick={handleClick}
+      >
+        Pending
+      </button>
+      <button
+        className={props.filter === "completed" ? styles.active : ""}
+        value="completed"
+        onClick={handleClick}
+      >
+        Completed
+      </button>
     </div>
   );
 }
