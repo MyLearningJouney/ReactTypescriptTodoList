@@ -9,8 +9,8 @@ interface Props {
   TodoItem: TodoItem;
 }
 
-function ListItem({ TodoItem }: Props) {
-  return TodoItem.status === "pending" ? (
+const listItemEnum = ({ TodoItem }: Props) => ({
+  pending: (
     <PendingListItem
       TodoItem={TodoItem}
       listStyles={{
@@ -19,7 +19,8 @@ function ListItem({ TodoItem }: Props) {
         buttons: styles.todoButtons,
       }}
     />
-  ) : TodoItem.status === "editing" ? (
+  ),
+  editing: (
     <EditingListItem
       TodoItem={TodoItem}
       listStyles={{
@@ -28,7 +29,8 @@ function ListItem({ TodoItem }: Props) {
         buttons: styles.todoButtons,
       }}
     />
-  ) : (
+  ),
+  completed: (
     <CompletedListItem
       TodoItem={TodoItem}
       listStyles={{
@@ -37,6 +39,10 @@ function ListItem({ TodoItem }: Props) {
         buttons: styles.todoButtons,
       }}
     />
-  );
+  ),
+});
+
+function ListItem({ TodoItem }: Props) {
+  return listItemEnum({ TodoItem })[TodoItem.status];
 }
 export default ListItem;
