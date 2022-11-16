@@ -3,7 +3,7 @@ import TodoList from "../../components/TodoList/TodoList";
 import { DateFormatDay } from "../../utils/DateFormat";
 
 import styles from "../Homepage/Homepage.module.scss";
-import CampSvg from "./Svg/CampSvg/CampSvg";
+import CampSvg from "./Svg/CampSvg";
 import ForestSvg from "./Svg/ForestSvg";
 
 function Homepage() {
@@ -13,7 +13,7 @@ function Homepage() {
     <main>
       <section className={styles.hero}>
         <ForestSvg />
-        <h1>Awesome Todo-List</h1>
+        <h1>AWESOME TO DO LIST</h1>
         <p> Today is {today}</p>
       </section>
       <section className={styles.todoList}>
