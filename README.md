@@ -11,7 +11,9 @@ Projeto realizado para avaliação de conhecimentos de development!
 </div>
 
 <div id="especs" align="center">
+ <h2>
 Especificações:
+ </h2>
 </div>
 <div id="lista" align="left">
  <ol>
