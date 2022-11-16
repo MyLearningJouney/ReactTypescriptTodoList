@@ -17,7 +17,7 @@ Especificações:
 </div>
 <div id="lista" align="left">
  <ol>
-  <li>
+  <li style="text-decoration: line-through">
 Deve ser feito utilizando React Hooks;
   </li>
    <li>
