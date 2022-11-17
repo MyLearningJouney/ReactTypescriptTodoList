@@ -7,12 +7,12 @@ interface Props {
   hidden?: boolean;
 }
 
-function ConfirmButton(props: Props) {
+function ConfirmButton({ type, onClick, hidden }: Props) {
   return (
     <button
-      type={props.type}
-      onClick={props.onClick}
-      className={props.hidden ? `${styles.hide}` : `${styles.confirmButton}`}
+      type={type}
+      onClick={onClick}
+      className={hidden ? `${styles.hide}` : `${styles.confirmButton}`}
     >
       <FaCheck className={styles.icon} />
     </button>

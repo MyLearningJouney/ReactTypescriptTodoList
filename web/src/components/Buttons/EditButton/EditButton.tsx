@@ -6,12 +6,12 @@ interface Props {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   hidden?: boolean;
 }
-function EditButton(props: Props) {
+function EditButton({ type, onClick, hidden }: Props) {
   return (
     <button
-      type={props.type}
-      onClick={props.onClick}
-      className={props.hidden ? `${styles.hide}` : `${styles.editButton}`}
+      type={type}
+      onClick={onClick}
+      className={hidden ? `${styles.hide}` : `${styles.editButton}`}
     >
       <FaPen className={styles.icon} />
     </button>

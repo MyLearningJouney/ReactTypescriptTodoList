@@ -6,12 +6,12 @@ interface Props {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   hidden?: boolean;
 }
-function AddButton(props: Props) {
+function AddButton({ type, onClick, hidden }: Props) {
   return (
     <button
-      type={props.type}
-      onClick={props.onClick}
-      className={props.hidden ? `${styles.hide}` : `${styles.addButton}`}
+      type={type}
+      onClick={onClick}
+      className={hidden ? `${styles.hide}` : `${styles.addButton}`}
     >
       <FaPlus className={styles.icon} />
     </button>

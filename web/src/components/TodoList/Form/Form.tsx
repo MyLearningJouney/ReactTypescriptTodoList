@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import ListDataContext from "../../../context/ListDataContext";
 import { TodoItem } from "../../../types/TodoItem";
 import { v4 as uuidv4 } from "uuid";
@@ -10,6 +10,7 @@ import { DateFormatComplete } from "../../../utils/DateFormat";
 function Form() {
   const { setListData } = useContext(ListDataContext);
   const [todo, setTodo] = useState<string>("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,6 +22,7 @@ function Form() {
       id: uuidv4(),
     };
     setListData((prevTodoList) => [...prevTodoList, newTodo]);
+    formRef.current?.reset();
   };
 
   const handleChangeInputForm = (
@@ -31,7 +33,7 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className={styles.form} ref={formRef}>
       <input
         className={styles.input}
         type="text"

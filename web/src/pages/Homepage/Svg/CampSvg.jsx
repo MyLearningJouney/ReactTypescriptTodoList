@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function CampSv2() {
+function CampSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -603,4 +603,4 @@ function CampSv2() {
   );
 }
 
-export default CampSv2;
+export default CampSvg;

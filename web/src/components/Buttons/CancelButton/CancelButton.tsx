@@ -7,12 +7,12 @@ interface Props {
   hidden?: boolean;
 }
 
-function CancelButton(props: Props) {
+function CancelButton({ type, onClick, hidden }: Props) {
   return (
     <button
-      type={props.type}
-      onClick={props.onClick}
-      className={props.hidden ? `${styles.hide}` : `${styles.cancelButton}`}
+      type={type}
+      onClick={onClick}
+      className={hidden ? `${styles.hide}` : `${styles.cancelButton}`}
     >
       <CgClose className={styles.icon} />
     </button>
