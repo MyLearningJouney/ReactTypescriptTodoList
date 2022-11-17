@@ -57,7 +57,8 @@ Deve ser utilizado useState; ✔️
   </ol
  </div>
 
-  
-  <h2>
+  <div id="footer" align="center">
+  <h3>
    Desenvolvido por: Danilo Packer
-  </h2>
+  </h3>
+  </div>
