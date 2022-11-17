@@ -56,9 +56,9 @@ Deve ser utilizado useState; ✔️
               </li>
   </ol
  </div>
-
+<hr>
   <div id="footer" align="center">
-  <h3>
+  <p style="font-size:12px">
    Desenvolvido por: Danilo Packer
-  </h3>
+  </p>
   </div>
